@@ -37,10 +37,10 @@ section:nth-child(3) p:nth-child(1) {
     width : 250px; 
     text-align: center;
     float : right;
-    border-left-width: 5px;
+    border-left-width: 1px;
     border-left-style: solid;
     border-left-color: black;
-    border-bottom-width: 5px;
+    border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: black;
 }
@@ -62,7 +62,7 @@ section:nth-child(3) p:nth-child(1) {
 }
 
 .cset {
-	border: 5px solid black;
+	border: 1px solid black;
 	position: relative;
 	background-color: #C0C0C0;
     margin: 10px;
