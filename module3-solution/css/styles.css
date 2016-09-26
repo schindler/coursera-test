@@ -1,0 +1,94 @@
+body {
+  font-size: 16px;
+  color: #fff;
+  background-color: #00;
+  font-family: 'Oxygen', sans-serif;
+}
+
+
+body > h1 {
+	text-shadow: 1px 1px 1px #222;
+	color : black;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+#header-nav {
+  background-color: #005678;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-brand {
+  padding-top: 25px;
+}
+
+#collapsable-nav{
+	padding: 0;
+}
+
+#nav-list {
+	background-color: #003668;
+	height: 100%;
+	width: 100%;
+	margin: 0; 
+}
+
+.navbar-brand h1 {  
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #222;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: .5;
+}
+
+section {
+	background-color: 0;
+} 
+
+
+#collapsable-nav a {
+	color: white;
+}
+
+/* A new class to handle session breaf description*/
+
+
+.description {
+  width : 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  color: black;
+  clear: right;  
+}
+
+.breaf {
+    font-size : 125%;  
+    width : 250px; 
+    text-align: center;
+    float : right;
+    border: 1px solid black; 
+    margin :-1px;
+}
+
+
+.cset {
+	border: 1px solid black;
+	position: relative;
+	background-color: #C0C0C0;
+    margin: 10px;
+    min-width: 250px;
+}
+
+.row {
+  width: 100%;
+  align-self: center;
+}
+
+section a {
+	text-decoration: underline;
+}
