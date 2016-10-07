@@ -1,0 +1,33 @@
+body {
+  //min-height : 2000px;
+  min-width  :  400px;
+  //padding-top:   70px;
+}
+
+.navbar {
+  min-width  :  100px;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left:  15px;
+  text-align: center;
+}
+
+ .modal-header, h4, .close {
+      background-color: #333;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
