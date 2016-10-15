@@ -16,6 +16,7 @@
 		
 		narrow.search = function () {
 			narrow.touched = true;
+            narrow.found = [];
 			 if ( narrow.input.length > 0 )
 				 narrow.found = search.getMatchedMenuItems(narrow.input)
 		                .then (function (result) {                   
