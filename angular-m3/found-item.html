@@ -1,0 +1,25 @@
+<div class="form-group table-responsive col-md-12">         
+  <table class="table">
+	<thead> 
+	  <tr>
+		<th style = "width : 30%;">Name</th>
+		<th style = "width : 10%;">Short</th>
+		<th style = "width : 50%;">Description</th>
+        <th style = "width : 10%;">Total <span class="badge">{{found.length}}</span></th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="info" ng-repeat="value in found" >
+		<td>{{value.name}}</td>
+		<td>{{value.short_name}}</td>
+		<td>{{value.description}}</td>
+		<td>                    
+			<button class="btn btn-secondary" ng-click="remove({ index : $index})">				
+				<span class="glyphicon glyphicon-remove"></span>
+				 Don't want this one!
+			</button>
+		</td>
+	  </tr>
+	</tbody>
+  </table>
+</div>
