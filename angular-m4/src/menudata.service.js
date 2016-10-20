@@ -2,7 +2,7 @@
 'use strict'
   
   angular.module('data')  
-  .service ('menu-data-service', MenuDataService);
+  .service ('MenuDataService', MenuDataService);
   
   MenuDataService.$inject = ["$http"];
   
@@ -22,8 +22,11 @@
        return $http({
          method: 'GET',
          url   : 'https://davids-restaurant.herokuapp.com/menu_items.json',
-         datavv: {category: categoryShortName}
-       }).then(function (result) { return result.data.menu_items; });
+         params: {category: categoryShortName}
+       }).then(function (result) { 
+          //console.log(result.data.category);
+          //console.log(result.data.menu_items);
+          return result.data; });
        
      }
     

@@ -1,0 +1,39 @@
+<div class="jumbotron text-center">
+  <h1>{{data.category.name}}
+    <button ng-if="data.category.special_instructions"
+            type="button" 
+            class="btn" 
+            data-toggle="collapse" 
+            data-target="#instructions">
+            <span class="glyphicon glyphicon-resize-full"></span>
+    </button>
+  </h1>
+  <p id="instructions" class="collapse">{{data.category.special_instructions}}</p>
+</div>
+
+<ul class="nav nav-tabs">
+  <li><a data-toggle="tab" ui-sref="home">Home</a></li>
+  <li><a data-toggle="tab" ui-sref="categories">Categories</a></li>
+  <li class="active"><a>Items</a></li>
+</ul>
+
+<div class="list-group">   
+    <a class="list-group-item" 
+       ng-repeat="item in data.items">       
+         <span class="badge">{{item.short_name}}</span>{{item.name}}
+    </a>                     
+</div>
+
+
+<!--
+<script>
+$(document).ready(function(){
+  $("#instructions").on("hide.bs.collapse", function(){
+    $(".btn").html('<span class="glyphicon glyphicon-menu-down"></span>');
+  });
+  $("#instructions").on("show.bs.collapse", function(){
+    $(".btn").html('<span class="glyphicon glyphicon-menu-up"></span>');
+  });
+});
+</script>
+-->

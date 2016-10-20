@@ -11,9 +11,17 @@ body {
 .loading-icon {
   position: absolute;
   left: 50%;
-  top: 10px;
+  top: 50%;
 }
 
 .active {
   font-weight: bold;
 }
+
+
+
+.list-group-item:nth-child(odd){
+  color:#31708f;
+  background-color:#d9edf7;
+}
+
