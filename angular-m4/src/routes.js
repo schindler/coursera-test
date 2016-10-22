@@ -29,8 +29,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
               return MenuDataService.getAllCategories();
             }]
     },
-    controller   : ['items', function (items) { this.items = items; } ],
-    controllerAs : 'data'
+    controller   : 'MenuDataController as data' 
   })
   
    // Items page
@@ -43,14 +42,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
                  return MenuDataService.getItemsForCategory($stateParams.categoty_id);
             }]
     },
-    controller   : ['items', '$state', function (items, $state) {                                  
-                                 this.items   =items.menu_items; 
-                                 this.category=items.category;                                
-                                 if (undefined == this.category)
-                                   $state.go('home');
-                                 
-                              } ],
-    controllerAs : 'data'
+    controller   : 'MenuItemDataController as data'
   });
 }
 
