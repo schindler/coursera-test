@@ -38,12 +38,19 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/items/{categoty_id}',
     templateUrl: 'src/templates/items.template.html',
     resolve: {
-      items: ['$stateParams', 'MenuDataService',
-            function ($stateParams, MenuDataService) {
-               return MenuDataService.getItemsForCategory($stateParams.categoty_id);
+      items: ['$stateParams', 'MenuDataService', '$state',
+                function ($stateParams, MenuDataService, $state) {               
+                 return MenuDataService.getItemsForCategory($stateParams.categoty_id);
             }]
     },
-    controller   : ['items', function (items) { this.items = items.menu_items; this.category=items.category; } ],
+    controller   : ['items', '$state', function (items, $state) { 
+                                 
+                                 this.items   =items.menu_items; 
+                                 this.category=items.category;                                
+                                 if (undefined == this.category)
+                                   $state.go('home');
+                                 
+                              } ],
     controllerAs : 'data'
   });
 }
