@@ -12,23 +12,18 @@
       .controller('login-controller', LoginController);
   })();
   
-  LoginController.$inject = ['$mdDialog', '$mdMedia', '$mdToast'];
-  function LoginController ($mdDialog, $mdMedia,$mdToast) {
-    var login = this;
-          this.topDirections = ['left', 'up'];
-      this.bottomDirections = ['down', 'right'];
-
-      this.isOpen = false;
-
-      this.availableModes = ['md-fling', 'md-scale'];
+  
+  LoginController.$inject = ['$mdDialog', '$mdMedia', '$mdToast', '$window'];
+  function LoginController ($mdDialog, $mdMedia,$mdToast, $window) {
+        
+      var login   = this;
+      this.isOpen = false; 
       this.selectedMode = 'md-fling';
-
-      this.availableDirections = ['up', 'down', 'left', 'right'];
-      this.selectedDirection = 'left';
-    login.status = "";
-    login.username = "";
-    login.password ="";
-    login.show =function ($event){
+ 
+      login.status = "";
+      login.username = "";
+      login.password ="";
+      login.show =function ($event){
 
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({
