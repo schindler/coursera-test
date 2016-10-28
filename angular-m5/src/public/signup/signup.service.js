@@ -10,7 +10,8 @@ function SignUpService($scope) {
   var service = this;
  
   service.hasCredential = function () {
-     return localStorage.getItem("signup").length>4;
+  	 var v = localStorage.getItem("signup");
+     return v!==null && v.length>4;
   };
 
   service.setCredential = function (credential) {
