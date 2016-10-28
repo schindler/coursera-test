@@ -1,29 +1,32 @@
 <div class="container">
-
-
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form name='form_signup' novalidate>
 			<h2>Sign Up <small>for the newsletter.</small></h2>
-			<hr>
+			
+		    <div class="label label-success label-lg col-xs-12 col-sm-12 col-md-12" ng-show="signupCtrl.signin">
+		       <span class="glyphicon glyphicon-ok"></span>
+		       Your information has been saved.
+		    </div>
+		    <hr>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 					    <label for="first_name"><span class="glyphicon glyphicon-user"></span> First Name</label>
                         <input type="text" name="first_name" ng-model="signupCtrl.first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" pattern="[a-zA-Z]*" required>
                    		<div ng-messages="form_signup.first_name.$error" ng-show="form_signup.first_name.$touched">
-			              <div ng-message="required">You <b>must</b> inform your name.</div>
-			              <div ng-message="pattern">Name <b>must</b> contains only letters</div>
+			              <div class="label label-danger" ng-message="required">You <b>must</b> inform your name.</div>
+			              <div class="label label-danger" ng-message="pattern">Name <b>must</b> contains only letters</div>
 			           </div>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-					     <label for="last_name"> Last Name</label>
+					    <label for="last_name"> Last Name</label>
 						<input type="text" name="last_name" ng-model="signupCtrl.last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" pattern="[a-zA-Z]*" required>
                    		<div ng-messages="form_signup.last_name.$error" ng-show="form_signup.last_name.$touched">
-			              <div ng-message="required">You <b>must</b> inform your last name.</div>
-			              <div ng-message="pattern">It <b>must</b> contains only letters</div>
+			              <div class="label label-danger" ng-message="required">You <b>must</b> inform your last name.</div>
+			              <div class="label label-danger" ng-message="pattern">It <b>must</b> contains only letters</div>
 			           </div>
 					</div>
 				</div>
@@ -32,23 +35,23 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 					    <label for="phone"><span class="glyphicon glyphicon-phone-alt"></span> Phone Number</label>
-                        <input type="text" name="phone" ng-model="signupCtrl.phone" class="form-control input-lg" placeholder="###-###-####"" tabindex="3" pattern="(\d{3})-(\d{3})-(\d{4})" required>
-                   		<div ng-messages="form_signup.first_name.$error" ng-show="form_signup.first_name.$touched">
-			              <div ng-message="required">You <b>must</b> inform your name.</div>
-			              <div ng-message="pattern">Name <b>must</b> contains only letters</div>
+                        <input type="text" name="phone" ng-model="signupCtrl.phone" class="form-control input-lg" placeholder="###-###-####"" tabindex="3" pattern="(\d{3})-?(\d{3})-?(\d{4})" required>
+                   		<div ng-messages="form_signup.phone.$error" ng-show="form_signup.phone.$touched">
+			              <div class="label label-danger" ng-message="required">You <b>must</b> inform your phone number.</div>
+			              <div class="label label-danger" ng-message="pattern">Phone <b>must</b> be ###-###-####</div>
 			           </div>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 					    <label for="fmenu"><span class="glyphicon glyphicon-cutlery"></span> Favorite Item Code</label>
-						<input type="text" name="fmenu" ng-model="signupCtrl.fmenu" id="fmenu" class="form-control input-lg" placeholder="" tabindex="4" pattern="[a-zA-Z0-9]{1,4}" required ng-change="signupCtrl.ckeckItem(form_signup);">
-                   		<div ng-messages="form_signup.fmenu.$error" ng-show="form_signup.fmenu.$touched">
-			              <div ng-message="required">You <b>must</b> inform your Favorite Item.</div>
-			              <div ng-message="pattern"><b>[a-zA-Z0-9]{1,4}</b></div>
-			              <div ng-message="no-item">No such menu number exists</div>
+						<input type="text" name="fmenu" ng-model="signupCtrl.fmenu" id="fmenu" class="form-control input-lg" placeholder="" tabindex="4" pattern="[a-zA-Z0-9]{1,4}" required menu-item-checker items="signupCtrl.items">
+                   		<div ng-messages="form_signup.fmenu.$error" ng-show="form_signup.fmenu.$touched"">
+			              <div class="label label-danger" ng-message="required">You <b>must</b> inform your Favorite Item.</div>
+			              <div class="label label-danger" ng-message="pattern">Invalid format</div>
+			              <div class="label label-danger" ng-message="invalid-item-code">No such menu number exists</div>
 			           </div>
-			           <span ng-show="form_signup.fmenu.$valid" class="label label-success"> {{ signupCtrl.smenu.name }} </span>
+			           <span ng-show="form_signup.fmenu.$valid" class="label label-success"> {{ signupCtrl.update() }} </span>
 					</div>
 				</div>
 			</div>
@@ -57,23 +60,29 @@
 			    <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email Address</label>
 				<input type="email" name="email" id="email" ng-model="signupCtrl.email" class="form-control input-lg" placeholder="your.email@domain.com" tabindex="5" required>
 				<div ng-messages="form_signup.email.$error" ng-show="form_signup.email.$touched">
-			         <div ng-message="required">You <b>must</b> inform your email.</div>
-			         <div ng-message="email">Email <b>must</b> be like user@domain</div>
+			         <div class="label label-danger" ng-message="required">You <b>must</b> inform your email.</div>
+			         <div class="label label-danger" ng-message="email">Email <b>must</b> be like user@domain</div>
 			    </div>
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-3">
-					  <label><input type="checkbox" value=""> I Agree</label>
+					  <label><input name="agree" type="checkbox" value="" ng-model="signupCtrl.agree"> I Agree</label>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
 					 By clicking <strong class="label label-primary">Sign up</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
 			</div>
-			
 			<hr>
 			<div class="row">
-			    <div class="col-xs-12 col-md-6"></div>
-				<div class="col-xs-12 col-md-6"><button ng-disabled="form_signup.$invalid" type="submit" class="btn btn-primary btn-block btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Sign&nbsp;up</button></div>	
+			    <div class="col-xs-12 col-md-6">
+			    	<div ng-show="signupCtrl.registered">
+				    	<button ng-click="signupCtrl.clear();" class="btn btn-danger btn-block btn-lg">
+				    	<span class="glyphicon glyphicon-trash"></span>&nbsp;Remove</button>
+			    	</div>
+			    </div>
+				<div class="col-xs-12 col-md-6">
+					<button ng-disabled="form_signup.$invalid || !signupCtrl.agree" type="submit" ng-click="signupCtrl.signUp();" class="btn btn-primary btn-block btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;{{signupCtrl.registered ? 'Update' : 'Sign up'}}</button>
+				</div>	
 			</div>
 		</form>
 	</div>
