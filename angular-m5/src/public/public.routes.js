@@ -51,6 +51,21 @@ function routeConfig ($stateProvider) {
           return MenuService.getMenuItems("");
         }]
       }
+    })
+    .state('public.myinfo', {
+      url: '/myinfo',
+      templateUrl: 'src/public/myinfo/myinfo.html',
+      controller:   'MyInfoController' ,
+      controllerAs: 'info',
+      resolve: {
+        menu: ['MenuService', 'SignUpService', function (MenuService, SignUpService) {
+          if (SignUpService.hasCredential()) {
+            var shortName =  SignUpService.getCredential().fmenu;
+            return MenuService.getMenuItems(shortName.split(/[0-9]+/)[0]); 
+          }   
+          return {};       
+        }]
+      }
     });
 }
 })();

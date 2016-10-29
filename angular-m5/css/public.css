@@ -173,6 +173,21 @@ h3.menu-item-title {
   border: 2px red solid;
 }
 
+.btn-primary {
+  background: #f6b319;
+ }
+
+.btn-primary:hover {
+  background: #e6a309;
+ }
+
+ .label-primary {
+  background: #f6b319;
+ }
+
+ .btn {
+    margin-bottom: 10px;
+ }
 
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
