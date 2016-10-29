@@ -58,11 +58,11 @@ function routeConfig ($stateProvider) {
       controller:   'MyInfoController' ,
       controllerAs: 'info',
       resolve: {
-        menu: ['MenuService', 'SignUpService', function (MenuService, SignUpService) {
+        item: ['MenuService', 'SignUpService', function (MenuService, SignUpService) {
           if (SignUpService.hasCredential()) {
             var shortName =  SignUpService.getCredential().fmenu;
-            return MenuService.getMenuItems(shortName.split(/[0-9]+/)[0]); 
-          }   
+            return MenuService.getMenuItem(shortName);
+          } 
           return {};       
         }]
       }

@@ -6,15 +6,14 @@
   		.controller('MyInfoController', MyInfoController);
 
 
-  	MyInfoController.$inject = ['menu', 'SignUpService'];
+  	MyInfoController.$inject = ['item', 'SignUpService'];
 
 
-  	function MyInfoController(menu, SignUpService) {
+  	function MyInfoController(item, SignUpService) {
   		var info = this;
   		info.registered = SignUpService.hasCredential();
   		info.credential = SignUpService.getCredential ();
-  		if (menu.menu_items)
-  		   info.item = $.grep(menu.menu_items, function(item){ return item.short_name === info.credential.fmenu; })[0];
+  		info.item = item;
   	}
 
 })();
