@@ -39,6 +39,7 @@
         })
         .then(function (user) {
            console.log(user);
+           $window.location.reload();
            showToast(`Welcome ${user.name}!`);
         })
         .catch(function () {
