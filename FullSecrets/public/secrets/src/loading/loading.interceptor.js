@@ -19,7 +19,7 @@ function LoadingHttpInterceptor($rootScope, $q) {
 
   return {
     request: function (config) {
-       console.log("Inside interceptor, config: " + config);
+       console.log("Inside interceptor req, count: " + loadingCount);
 
       if (++loadingCount === 1) {
         $rootScope.$broadcast(loadingEventName, {on: true});
@@ -29,6 +29,9 @@ function LoadingHttpInterceptor($rootScope, $q) {
     },
 
     response: function (response) {
+
+      console.log("Inside interceptor res, count: " + loadingCount);
+
       if (--loadingCount === 0) {
         $rootScope.$broadcast(loadingEventName, {on: false});
       }
@@ -37,6 +40,8 @@ function LoadingHttpInterceptor($rootScope, $q) {
     },
 
     responseError: function (response) {
+      console.log("Inside interceptor err, count: " + loadingCount);
+
       if (--loadingCount === 0) {
         $rootScope.$broadcast(loadingEventName, {on: false});
       }

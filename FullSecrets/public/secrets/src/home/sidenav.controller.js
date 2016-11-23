@@ -15,7 +15,9 @@
    function SideNavController($timeout, $mdSidenav, $log, session) {
         var ctrl = this;
         ctrl.fullname = (session.getUser() || { name : ""}).name;
+        ctrl.username = (session.getUser() || { email: ""}).email;
 		ctrl.toggle   = buildDelayedToggler('left'); 
+		ctrl.close    = buildDelayedClose('left');
 		ctrl.isOpen   = function(navID){
 		  return $mdSidenav(navID).isOpen();
 		};
@@ -43,17 +45,36 @@
 		 * Build handler to open/close a SideNav; when animation finishes
 		 * report completion in console
 		 */
+		function buildDelayedClose(navID) {
+		  return debounce(function() {
+		    // Component lookup should always be available since we are not using `ng-if`
+            ctrl.fullname = (session.getUser() || { name  : ""}).name;
+            ctrl.username = (session.getUser() || { email : ""}).email;
+		    $mdSidenav(navID)
+		      .close()
+		      .then(function () {
+				
+		        $log.debug("close " + navID + " is done");
+		      });
+		  }, 300);
+		}
+
+		/**
+		 * Build handler to open/close a SideNav; when animation finishes
+		 * report completion in console
+		 */
 		function buildDelayedToggler(navID) {
 		  return debounce(function() {
 		    // Component lookup should always be available since we are not using `ng-if`
-            ctrl.fullname = (session.getUser() || { name : ""}).name;
+            ctrl.fullname = (session.getUser() || { name  : ""}).name;
+            ctrl.username = (session.getUser() || { email : ""}).email;
 		    $mdSidenav(navID)
 		      .toggle()
 		      .then(function () {
 				
 		        $log.debug("toggle " + navID + " is done");
 		      });
-		  }, 200);
+		  }, 300);
 		}
 
 		function buildToggler(navID) {
