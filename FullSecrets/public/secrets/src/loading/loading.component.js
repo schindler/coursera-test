@@ -13,7 +13,7 @@ function LoadingController ($rootScope) {
   var $ctrl = this;
   var listener;
   
-   console.log("LoadingController: on" );
+   //console.log("LoadingController: on" );
 
   $ctrl.$onInit = function() {
     $ctrl.show = false;
@@ -25,7 +25,7 @@ function LoadingController ($rootScope) {
   };
 
   function onSpinnerActivate(event, data) {
-    console.log("onSpinnerActivate: " + data.on);
+    //console.log("onSpinnerActivate: " + data.on);
     $ctrl.show = data.on;
   }
 }
